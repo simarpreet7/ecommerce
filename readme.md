@@ -46,7 +46,7 @@ An ecommerce platform is a software application that lets you set up an online s
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are welcome
 
-[Simarpreet Singh](https://github.com/simarpreet7)
+[Simarpreet](https://github.com/simarpreet7)
 [Naveen](https://github.com/gcc-naveen)
 [Arnav](https://github.com/glasscode-arnav)
 
