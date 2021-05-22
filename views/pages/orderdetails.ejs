@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../public/css/seller.css" />
+  <link rel="stylesheet" href="../../public/css/seller-order-details.css" />
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <%- include("../partials/seller/nav.ejs") %>
+    <div class="content-wrapper">
+
+        
+<!--  ////////HERE///////////////////////// -->
+<div class="details-container">
+    <div class="details-title">
+        <h2>Order Details</h2>
+    </div>
+
+    <div class="tab-pane fade show active" id="order" role="tabpanel" aria-labelledby="nav-home-tab">
+		<div id="" role="tablist">
+			<div class="row ">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+							<h5 class="mb-0">
+								Buyer Info
+							</h5>
+						</div>
+
+						<div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+							<div class="card-body">
+								<form>
+
+                                    <dl class="row">
+                                        <dd class="col-sm-4">First Name :</dd>
+                                        <dt class="col-sm-8"><%=order.address.firstname%></dt>
+                                        <dd class="col-sm-4">Last Name :</dd>
+                                        <dt class="col-sm-8"><%=order.address.firstname%></dt>
+                                        <dd class="col-sm-4">E-mail :</dd>
+                                        <dt class="col-sm-8"><%=order.address.email%></dt>
+                                        <dd class="col-sm-4">Phone no :</dd>
+                                        <dt class="col-sm-8"><%=order.address.phone%></dt>
+                                    </dl>
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+                    <div class="card">
+						<div class="card-header collapsed" role="tab" id="headingTwo" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+							<h5 class="mb-0">
+								Shipping Address
+							</h5>
+						</div>
+						<div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+							<div class="card-body">
+								<form>
+
+                                    <dl class="row">
+                                        <dd class="col-sm-4">Address :</dd>
+                                        <dt class="col-sm-8"><%=order.address.line%></dt>
+                                        <dd class="col-sm-4">State :</dd>
+                                        <dt class="col-sm-8"><%=order.address.city%></dt>
+                                        <dd class="col-sm-4">Country :</dd>
+                                        <dt class="col-sm-8"><%=order.address.country%></dt>
+                                        <dd class="col-sm-4">Postal Code :</dd>
+                                        <dt class="col-sm-8"><%=order.address.postal%></dt>
+                                    </dl>
+
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+
+
+				</div>
+
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							<div class="d-inline h4">Order Details</div>
+						</div>
+						<div class="card-body">
+                            <dl class="row">
+                            <img class="product-img" src="<%=order.items.image%>" alt="product" />
+                            </dl>
+
+							<dl class="row">
+								<dd class="col-sm-4">Product Name :</dd>
+								<dt class="col-sm-8"><%=order.items.itemname%></dt>
+                                <dd class="col-sm-4">Order ID :</dd>
+								<dt class="col-sm-8"><%=order._id%></dt>
+								<dd class="col-sm-4">Quantity :</dd>
+								<dt class="col-sm-8"><%=order.items.itemname%></dt>
+                                <dd class="col-sm-4">Total Price :</dd>
+								<dt class="col-sm-8"><%=order.totalPrice%></dt>
+							</dl>
+							<dl class="row">
+								
+							</dl>
+							<dl class="row">
+								<dd class="col-sm-4">Placed on :</dd>
+								<dt class="col-sm-8"><%=order.orderDate%></dt>
+								<dd class="col-sm-4">Payment Method :</dd>
+								<dt class="col-sm-8"><%=order.payment%></dt>
+                                <dd class="col-sm-4">Order Status :</dd>
+								<dt class="col-sm-8"><%=order.status%></dt>
+							</dl>
+							
+							
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+    </div>       
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+          <!-- /.content-wrapper-->
+          <footer class="sticky-footer">
+            <div class="container">
+              <div class="text-center">
+                <small>Shopville</small>
+              </div>
+            </div>
+          </footer> 
+
+          <!-- Logout Modal-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="/auth/logout">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+        <!-- SCRIPTS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.5/umd/popper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    
+        <script>
+          $(document).ready(function() {
+        $('#example').DataTable();
+            } );
+
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+        
+      </body>
+      </html>
+    

@@ -1,0 +1,103 @@
+<!-- Navigation -->
+<nav class="nav nav-cart">
+    <div class="wrapper container">
+      <div ><a href=""><img class="brand-logo" src="../../public/img/logo.png" alt="logo"></a></div>
+      <ul class="nav-list">
+        <div class="top">
+          <label for="" class="btn close-btn"><i class="fas fa-times"></i></label>
+        </div>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/order">Orders</a></li>
+        <li><a href="/wishlist">Wishlist</a></li>
+        <!-- <li>
+          <a href="" class="desktop-item">Shop <span><i class="fas fa-chevron-down"></i></span></a>
+          <input type="checkbox" id="showMega" />
+          <label for="showMega" class="mobile-item">Shop <span><i class="fas fa-chevron-down"></i></span></label>
+          <div class="mega-box">
+            <div class="content">
+              <div class="row">
+                <img src="../../public/img/woman.jpg" alt="" />
+              </div>
+              <div class="row">
+                <header  >Trending</header>
+                  <ul class="mega-links">
+                    <li><a href="#">New Releases</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Today's Deals</a></li>
+                  </ul>
+              </div>
+              <div class="row">
+                <header >Shop by Department</header>
+                <ul class="mega-links">
+                  <li><a href="#">Fashion</a></li>
+                  <li><a href="#">Mobiles</a></li>
+                  <li><a href="#">Furniture</a></li>
+                  <li><a href="#">Grocery</a></li>
+                </ul>
+              </div>
+              <div class="row">
+                <header  >Discover</header>
+                <ul class="mega-links">
+                  <li><a href="#">Gift Cards</a></li>
+                  <li><a href="#">Brands</a></li>
+                  <li><a href="#">Sell on Amazon</a></li>
+                  <li><a href="#">Coupns</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li><a href="">Orders</a></li>
+        <li>
+          <a href="" class="desktop-item">Vendors <span><i class="fas fa-chevron-down"></i></span></a>
+          <input type="checkbox" id="showdrop1" />
+          <label for="showdrop1" class="mobile-item">Vendors <span><i class="fas fa-chevron-down"></i></span></label>
+          <ul class="drop-menu1">
+            <li><a href="">Vendor Store listings</a></li>
+            <li><a href="">Store Details</a></li>
+          </ul>
+        </li> -->
+
+        <li>
+          <a href="" class="desktop-item">Page <span><i class="fas fa-chevron-down"></i></span></a>
+          <input type="checkbox" id="showdrop2" />
+          <label for="showdrop2" class="mobile-item">Page <span><i class="fas fa-chevron-down"></i></span></label>
+          <ul class="drop-menu2">
+            <li><a href="">About</a></li>
+            <li><a href="/contactus">Contact</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms & Conditions</a></li>
+          </ul>
+        </li>
+        <!-- icons -->
+        <li class="icons">
+          <a href="/cart/shopping-cart"><span>
+            <img src="../../public/img/shoppingBag.svg" alt="" />
+          </span></a>
+          <span >
+
+            
+              <form action="/search"> 
+                      <input class="searchBox search-input " type="text"
+                      placeholder=" Search ..."
+                      name="search">
+                      <input type="hidden" name="category" id="name" value="null"></input>
+                      <input type="hidden" name="sortby" id="name" value="title"></input>
+                      <input type="hidden" name="orderby" id="name" value="ASC"></input>
+                      <button class="searchBox search-button "> 
+                        <i class="fa fa-search icon-colour"
+                            style="font-size: 18px;"> 
+                        </i> 
+                    </button>
+              </form>
+            
+
+          </span>
+
+          <a   href="/profile"><%= currentUser.username %></a>
+          <span ><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></span>
+        </li>
+      </ul>
+      <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>
+    </div>
+  </nav>

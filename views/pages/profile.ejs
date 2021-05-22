@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+  
+  <!-- Custom StyleSheet -->
+
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/account.css" />
+</head>
+
+<body>
+  
+  <%- include("../partials/nav.ejs") %>
+  <%users.forEach(function(user){%>
+  <form action="/profile/update" method="POST">
+    <section class="section promotion">
+      <!-- Account -->
+      
+      <div class="body-account">
+        <div class="card-details">
+          
+             <div class="details-card"> 
+            <img src="../../public/img/icon.png" class="image--cover">
+          
+          <h1 class="h1-details"><%=user.firstname%> <%=user.lastname%></h1>
+          </div>
+        <details class="warning" open>
+            <summary> Account Overview</summary>
+            <p class='field'>
+              <label for='user'>First Name</label>
+              <input type='text' id='user' name='firstname' title='Username' value="<%=user.firstname%>" />
+            </p>
+            <p class='field'>
+              <label for='user'>Last Name</label>
+              <input type='text' id='user' name='lastname' title='Username' value="<%=user.lastname%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>E-MAIL</label>
+              <input type='text' id='user' name='email' title='Username' value="<%=user.email%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Phone no</label>
+              <input type='text' id='user' name='phone' title='Username' value="<%=user.phone%>" />
+            </p>
+          </details>
+          
+          <details class="info" >
+            <summary>Shipping Address</summary>
+          <p class='field'>
+              <label for='user'>Address</label>
+              <textarea  type='text' id='user' name='line' title='Username' cols="10"  ><%=user.address.line%></textarea>
+            </p>
+  
+            <p class='field'>
+              <label for='user'>State</label>
+              <input type='text' id='user' name='city' title='Username' value="<%=user.address.city%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Country</label>
+              <input type='text' id='user' name='country' title='Username' value="<%=user.address.country%>" />
+            </p>
+  
+            <p class='field'>
+              <label for='user'>Postal Code</label>
+              <input type='text' id='user' name='postal' title='Username' value="<%=user.address.postal%>" />
+            </p>
+  
+          </details>
+          
+          <details class="alert">
+            <summary>Payment Options</summary>
+            <%for(var i=0;i<user.cards.length;i++){%>
+              <p class='field'>
+                <label for='user'>Card <%=i+1%></label>
+                <input type='text' id='user' name='user' title='Username' value="<%=user.cards[i].cardno%>" readonly/>
+              </p>
+              <a href="/profile/deletecard/<%=user.cards[i]._id%>"> <i class="fas fa-trash-alt" style="color: red; font-size: 20px; "></i></a>
+            <%}%>
+            <div>
+              <p style="padding-top: 2em;">
+                <a href="/profile/addcard" style="color: blue;">+add card</a>
+              </p>
+            </div>
+          </details>
+
+          <div class="button-update" >
+          <button class="big-button" >Update</button>
+        </div>
+
+        </div>
+        </div>
+      <!-- Account -->
+    </section>
+  </form>
+  <%})%>
+  <%- include("../partials/allfooter.ejs") %>
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

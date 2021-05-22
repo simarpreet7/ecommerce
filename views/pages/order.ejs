@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <linK rel="stylesheet" href="../../public/css/order.css">
+    <linK rel="stylesheet" href="../../public/css/tab.css">
+
+  
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+  <section class="section promotion" >
+    <div class="history-page">
+      <h1 class="history-page__title">Order History</h1>
+      <hr />
+
+
+<!-- ////////////TABS///////////////// -->
+<div class="body-tab">
+  <div class="tabby">
+    <div class="tabs">
+      <button class="tab is-selected" data-theme="placed">
+        Order Placed
+      </button>
+      <button class="tab" data-theme="delivered">
+        Delivered
+      </button>
+      <button class="tab" data-theme="cancelled">
+        Cancelled Orders
+      </button>
+      <button class="tab " data-theme="returned">
+        Returned
+      </button>
+    </div>
+  
+    <div class="tab-contents">
+      
+      <section class="tab-content is-selected" data-theme="placed">
+        <div>
+          <!-- Placed -->
+            <div class="product">
+            <section class="section products sp" >
+              <div class="product-layout container">
+                <%if(orders.length > 0){%>
+                  <%orders.forEach(function(order){%>
+                    <%if(order.status != "Delivered" && order.status != "Cancelled" && order.status != "Returned"){%>
+                <div class="col-3-of-4">
+                  <div class="product-layout">
+                      <section class="root">
+                        <figure>
+                          <img src="../../public/img/logo.png" alt="logo">
+                          <figcaption>
+                            <h4>Quantity <%= order.items.length%></h4>
+                            <h2>₹ <%=order.totalPrice%></h2>
+                          </figcaption>
+                        </figure>
+                        <div class="order-track">
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat"><%=order.status%></p>
+                              <span class="order-track-text-sub"><%=order.orderDate%></span>
+                            </div>
+                          </div> 
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat">Delivery</p>
+                              <span class="order-track-text-sub"><%=order.deliveryDate%></span>
+                            </div>
+                          </div>
+                        </div> 
+                            <hr class="separate2">
+                        <div class=" RowBox">
+                          <div class="col">
+                              <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
+                              <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
+                          </div>
+                      </div>
+                      <div class="div-btn">
+                      <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
+                      <a href="/order/cancel/<%=order._id%>" class="OH-btnn" >Cancel</a>
+                    </div>
+                    
+                      </section>
+                    </div>
+                  </div>
+                      <%}})%>
+                      <%}else{%>
+                        <div class="not-display">
+                            <h1 >No orders placed.</h1>
+                        </div>
+                      <%}%>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    
+      <section class="tab-content" data-theme="delivered">
+        <div>
+          <!-- Delivered -->
+            <div class="product">
+            <section class="section products sp" >
+              <div class="product-layout container">
+                <%if(orders.length > 0){%>
+                  <%orders.forEach(function(order){%>
+                  <%if(order.status == "Delivered"){%>
+                <div class="col-3-of-4">
+                  <div class="product-layout">
+                      <section class="root">
+                        <figure>
+                          <img src="../../public/img/logo.png" alt="logo">
+                          <figcaption>
+                            <h4>Quantity <%= order.items.length%></h4>
+                            <h2>₹ <%=order.totalPrice%></h2>
+                          </figcaption>
+                        </figure>
+                        <div class="order-track">
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat">Order Received</p>
+                              <span class="order-track-text-sub"><%=order.orderDate%></span>
+                            </div>
+                          </div> 
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat"><%=order.status%></p>
+                              <span class="order-track-text-sub"><%=order.deliveryDate%></span>
+                            </div>
+                          </div>
+                        </div> 
+                            <hr class="separate2">
+                        <div class=" RowBox">
+                          <div class="col">
+                              <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
+                              <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
+                              <p class="text-muted"><span class="idd">Return Upto :</span> <span class="dark"><%=order.returnDate%></span> </p>
+                          </div>
+                      </div>
+                      <div class="div-btn div-btn-delivered">
+                      <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
+                      <a href="/order/buyagain/<%=order._id%>" class="OH-btnn" >Buy Again</a>
+                      <a href="/order/return/<%=order._id%>" class="OH-btnn" >Return Order</a>
+                    </div>
+                    
+                      </section>
+                    </div>
+                  </div>
+                      <%}})%>
+                      <%}else{%>
+                        <div class="not-display">
+                            <h1 >No orders Delivered.</h1>
+                        </div>
+                      <%}%>
+              </div>
+
+            </section>
+            
+          </div>
+        </div>
+      </section>
+    
+      <section class="tab-content" data-theme="cancelled">
+        <div>
+          <!-- Cancelled -->
+            <div class="product">
+            <section class="section products sp" >
+              <div class="product-layout container">
+                <%if(orders.length > 0){%>
+                  <%orders.forEach(function(order){%>
+                    <%if(order.status == "Cancelled"){%>
+                <div class="col-3-of-4">
+                  <div class="product-layout">
+                      <section class="root">
+                        <figure>
+                          <img src="../../public/img/logo.png" alt="logo">
+                          <figcaption>
+                            <h4>Quantity <%= order.items.length%></h4>
+                            <h2>₹ <%=order.totalPrice%></h2>
+                          </figcaption>
+                        </figure>
+                        <div class="order-track">
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat">Order Received</p>
+                              <span class="order-track-text-sub"><%=order.orderDate%></span>
+                            </div>
+                          </div> 
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat"><%=order.status%></p>
+                              <span class="order-track-text-sub"><%=order.deliveryDate%></span>
+                            </div>
+                          </div>
+                        </div> 
+                            <hr class="separate2">
+                        <div class=" RowBox">
+                          <div class="col">
+                              <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
+                              <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
+                          </div>
+                      </div>
+                      <div class="div-btn">
+                      <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
+                    </div>
+                    
+                      </section>
+                    </div>
+                  </div>
+                      <%}})%>
+                      <%}else{%>
+                        <div class="not-display" >
+                            <h1 >No Cancelled orders.</h1>
+                        </div>
+                      <%}%>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+      
+      <section class="tab-content" data-theme="returned">
+        <div>
+          <!-- returned -->
+            <div class="product">
+            <section class="section products sp" >
+              <div class="product-layout container">
+                <%if(orders.length > 0){%>
+                  <%orders.forEach(function(order){%>
+                    <%if(order.status == "Returned"){%>
+                <div class="col-3-of-4">
+                  <div class="product-layout">
+                      <section class="root">
+                        <figure>
+                          <img src="../../public/img/logo.png" alt="logo">
+                          <figcaption>
+                            <h4>Quantity <%= order.items.length%></h4>
+                            <h2>₹ <%=order.totalPrice%></h2>
+                          </figcaption>
+                        </figure>
+                        <div class="order-track">
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat">Order Received</p>
+                              <span class="order-track-text-sub"><%=order.orderDate%></span>
+                            </div>
+                          </div> 
+                          <div class="order-track-step">
+                            <div class="order-track-status">
+                              <span class="order-track-status-dot"></span>
+                              <span class="order-track-status-line"></span>
+                            </div>
+                            <div class="order-track-text">
+                              <p class="order-track-text-stat"><%=order.status%></p>
+                              <span class="order-track-text-sub"><%=order.deliveryDate%></span>
+                            </div>
+                          </div>
+                        </div> 
+                            <hr class="separate2">
+                        <div class=" RowBox">
+                          <div class="col">
+                              <p class="text-muted"><span class="idd">Order ID :</span>  <span class="dark"><%=order._id%></span></p>
+                              <p class="text-muted"><span class="idd">Place On :</span> <span class="dark"><%=order.orderDate%></span> </p>
+                          </div>
+                      </div>
+                      <div class="div-btn">
+                      <a href="/order/viewdetails/<%=order._id%>" class="OH-btnn" >View Details</a>
+                    </div>
+                    
+                      </section>
+                    </div>
+                  </div>
+                <%}})%>
+              <%}else{%>
+                <div class="not-display" >
+                    <h1 >No returned orders.</h1>
+                </div>
+              <%}%>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+    
+    </div>
+    
+  </div>
+  </div>
+
+<!-- ////////////TABS///////////////// -->
+
+  
+
+    </div>
+  </section>
+
+
+
+
+<!-- Footer -->
+<%- include("../partials/allfooter.ejs") %>
+
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+<script src="../../public/js/tab.js"></script>
+</body>
+
+</html>

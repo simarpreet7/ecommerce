@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/hero.css" />
+
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+
+  <!--  HERO -->
+<section class="hero">
+  <div class="glide glide1" id="glide1">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides glide__hero">
+        <li class="glide__slide">
+          <div class="banner">
+            <div class="banner-content">
+              <span>Exclusive Sales</span>
+              <h1>UP TO 50% OFF ON SALES</h1>
+              <h3>Get all exclusive offers for the season</h3>
+              <a href="/sale">View Collection </a>
+            </div>
+            <img src="../../public/img/vert1.png" class="special_01" alt="">
+        </li>
+        <li class="glide__slide">
+          <div class="banner banner1">
+            <div class="banner-content">
+              <span>Exclusive Sales</span>
+              <h1>UP TO 50% OFF ON SALES</h1>
+              <h3>Get all exclusive offers for the season</h3>
+              
+              <a href="/sale">View Collection </a>
+            </div>
+            <img src="../../public/img/vert2.png" class="special_02" alt="">
+          </div>
+        </li>
+        <li class="glide__slide">
+          <div class="banner">
+            <div class="banner-content">
+              <span>Exclusive Sales</span>
+              <h1>UP TO 50% OFF ON SALES</h1>
+              <h3>Get all exclusive offers for the season</h3>
+              
+              <a href="/sale">View Collection </a>
+            </div>
+            <img src="../../public/img/vert3.png" class="special_03" alt="">
+          </div>
+        </li>
+      </ul>
+    </div> 
+    <!-- Arrows -->
+    <div class="glide__arrows" data-glide-el="controls">
+      <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-arrow-left"></i></button>
+      <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i
+          class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- Promotion -->
+  <section class="section promotion">
+    <div class="title">
+      <h2>Shop Collections</h2>
+      <span>Select from the premium product and save plenty money</span>
+    </div>
+    <div class="promotion-layout container">
+      <%categories.forEach(function(category){%>
+        <div class="promotion-item">
+            <img src="<%= category.image %>" alt="" />
+            <div class="promotion-content">
+                <h3><%= category.name %></h3>
+              <a href="/dashboard/<%= category._id%>">SHOP NOW</a>
+            </div>
+          </div>
+        <% }) %>
+    </div>
+  </section>
+  <!-- Products -->
+  <section class="section products">
+    <div class="title">
+      <h2>Today's Deals</h2>
+      <span style="padding: .5em .7em !important; " >Select from the premium product brands and save plenty money</span>
+    </div>
+    <div class="product-layout">
+        <%data.forEach(function(product){%>
+            <div class="product">
+            <div class="img-container">
+                <img src="<%=product.imageURL%>" alt="">
+                <div class="addCart">
+                      <form method="POST" action="/cart/add/<%= product._id%>">
+                        <div class="form-group">
+                          <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
+                          <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                          <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                          <input type="hidden" name="discount" id="discount" value="<%= product.discount %>"></input>
+                          <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
+                          <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
+                          <input type="hidden" name="seller" id="seller" value="<%= product.seller %>"></input>
+                        </div>
+                          <button type="submit" class="btn btn-cart btn-primary btn-lg"><i class="fa fa-shopping-cart"></i></button>
+                      </form>
+                  </div>
+                  <ul class="side-icons side-icons-dashboard">
+                    <span class="dash"><i class="fas fa-search"></i></span>
+                    <span>
+                      <form method="POST" action="/wishlist/add/<%= product._id%>">
+                        <div class="form-group">
+                          <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
+                          <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                          <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                          <input type="hidden" name="discount" id="discount" value="<%= product.discount %>"></input>
+                          <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
+                          <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
+                          <input type="hidden" name="seller" id="seller" value="<%= product.seller %>"></input>
+                        </div>
+                          <button type="submit" class="btn btn-cart btn-primary btn-lg  "><i class="far fa-heart" style="margin-left: 0.2em;"></i></i></button>
+                      </form>
+                    </span>
+                    <span class="dash"><i class="fas fa-sliders-h"></i></span>
+                  </ul>
+                  <div class="bottom">
+                    <a href=""><%=product.name%></a>
+                    <div class="price">
+                      <span><%=product.price%></span>
+                    </div>
+                  </div>
+                
+                </div>
+                </div>
+        <%})%>
+        
+    </div>
+  </section>
+
+  <!-- ADVERT -->
+  <section class="section advert">
+    <div class="advert-layout container">
+      <div class="item ">
+        <img src="../../public/img/promo7.jpg" alt="">
+        <div class="content left">
+          <span>Exclusive Sales</span>
+          <h3>Spring Collections</h3>
+          <a href="">View Collection</a>
+        </div>
+      </div>
+      <div class="item">
+        <img src="../../public/img/promo8.jpg" alt="">
+        <div class="content  right">
+          <span>New Trending</span>
+          <h3>Designer Bags</h3>
+          <a href="">Shop Now </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <%- include("../partials/allfooter.ejs") %>
+  <!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

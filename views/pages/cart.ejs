@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav nav-cart">
+      <div class="wrapper container">
+        <a href=""><img class="brand-logo-cart" src="../../public/img/logo.png" alt="logo"></a>
+        <ul class="nav-list">
+          <div class="top">
+            <label for="" class="btn close-btn"
+              ><i class="fas fa-times"></i
+            ></label>
+          </div>
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/order">Orders</a></li>
+          <li><a href="/wishlist">Wishlist</a></li>
+          <li>
+            <a href="" class="desktop-item">Page <span><i class="fas fa-chevron-down"></i></span></a>
+            <input type="checkbox" id="showdrop2" />
+            <label for="showdrop2" class="mobile-item">Page <span><i class="fas fa-chevron-down"></i></span></label>
+            <ul class="drop-menu2">
+              <li><a href="/aboutus">About</a></li>
+              <li><a href="/contactus">Contact</a></li>
+              <li><a href="/privacypolicy">Privacy Policy</a></li>
+              <li><a href="/terms&conditions">Terms & Conditions</a></li>
+            </ul>
+          </li>
+          <!-- icons -->
+          <li class="icons " >
+            <span>
+                <img src="../../public/img/shoppingBag.svg" alt="" />
+                <%if(products.length > 0){%>
+                <small class="count d-flex"><%= products.length%></small>
+                <%}else{%>
+                <small class="count d-flex">0</small>
+                <%}%>
+            </span>
+            <span> 
+              <form action="/search"> 
+                <input class="searchBox search-input " type="text"
+                placeholder=" Search ..."
+                name="search">
+                <input type="hidden" name="category" id="name" value="null"></input>
+                <input type="hidden" name="sortby" id="name" value="title"></input>
+                <input type="hidden" name="orderby" id="name" value="ASC"></input>
+                <button class="searchBox search-button  " style="background-color: #ECF1FF; height: .2em;"> 
+                  <i class="fa fa-search icon-colour"
+                      style="font-size: 18px;"> 
+                  </i> 
+                </button>
+              </form>
+            </span>
+            <span ><%= currentUser.username %></span>
+          <span><a href="/auth/logout"><i class="fa fa-sign-out"></i></a></span>
+          </li>
+        </ul>
+        <label for="" class="btn open-btn"><i class="fas fa-bars"></i></label>
+      </div>
+    </nav>
+
+    <!-- Cart Items -->
+    <div class="section promotion" style="padding-bottom: 0;">
+    <div class="container cart">
+      <%if(products.length > 0){%>
+      <table>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+        <%products.forEach(function(product){%>
+        <tr>
+          <td>
+            <div class="cart-info">
+              <img src="<%= product.image %>" alt="" />
+              <div>
+                <p><%= product.itemname %></p>
+                <br />
+                <form action="/cart/shopping-cart/remove/<%=currentUser._id%>/<%=product.item%>" method="POST">
+                  <button class="btn-remove">Remove</button>
+                </form>
+              </div>
+            </div>
+          </td>
+          <td>             
+            <form class="button-minus" action="/cart/shopping-cart/minus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+              <button class="btnn btnn-minus" >- </button>
+            </form>
+            <%= product.quantity %>
+            <form class="button-minus" action="/cart/shopping-cart/plus/<%=currentUser._id%>/<%=product.item%>" method="POST">
+              <button class="btnn"> +</button>
+            </form> 
+          </td>
+          <td>Rs <%= product.price %></td>
+        </tr>
+        <%})%>
+      </table>
+      <div class="total-price" style="float: right;">
+        <table>
+          <tr>
+            <td>Total</td>
+            <td>Rs <%= totalPrice %></td>
+          </tr>
+        </table>
+        <form action="/order/checkout" method="POST">
+          <button class="check-btn checkout btn" style="background-color:rgb(58, 58, 255); color: white; border: none; padding: .3em;">Checkout</button>
+        </form>
+        <!-- <a href="/order/new" class="check-btn checkout btn">Checkout</a> -->
+
+      </div>
+    </div>
+    <%}else{%>
+      <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron" >
+          <h1 class="display-4">Your Cart is empty.</h1>
+          <p class="lead">Your shopping cart is waiting. Give it purpose – fill it with clothing, electronics and more.</p>
+      </div>
+    <%}%>
+    </div>
+
+<%- include("../partials/allfooter.ejs") %>
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

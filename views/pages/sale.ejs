@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link  rel="stylesheet" href="../../public/css/swiper.min.css"/>
+  <link rel="stylesheet" href="../../public/css/sale.css"/>
+  
+
+
+</head>
+
+<body >
+
+    <%- include("../partials/nav.ejs") %>
+    <section class="section promotion">
+        <!-- ADVERT -->
+        <%- include("../partials/sale/vert.ejs") %>
+        <!-- SLIDER -->
+        <!--slider 1------------------------------------------>
+        <%- include("../partials/sale/slider_1.ejs") %>
+  
+  <!--swiper  slider end-->
+  
+  <!--slider 2 ------------------------------------------>
+  <%- include("../partials/sale/slider_2.ejs") %>
+  
+  <!--swiper  slider end-->
+    
+    <!-- GRID -->
+    <%- include("../partials/sale/grid.ejs") %>
+
+    </section>
+    
+
+    
+    <!-- Footer -->
+    <%- include("../partials/allfooter.ejs") %>
+<!-- End Footer -->
+
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+<script type="text/javascript" src="../../public/js/swiper.min.js"></script>
+<script src="../../public/js/script.js"></script>
+
+</body>
+
+</html>

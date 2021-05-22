@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+    <!-- Glidejs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/details.css" />
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+  <section class="section promotion">
+    
+    <div class="details-container">
+        <div class="details-title">
+            <h2>Order Details</h2>
+        </div>
+        <div class="d-flex">
+                    <div class="form-steps my-nav">
+                      <%if(order.status == "Delivered"){%>
+                        <div class="form-steps__item form-steps__item--completed">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">1</span>
+                        <span class="form-steps__item-text">Order Placed</span>
+                        <div class="form-steps__item-text"><%=order.orderDate%></div>
+                      </div>
+                    </div>
+                        <div class="form-steps__item form-steps__item--completed">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">2</span>
+                            <span class="form-steps__item-line"></span>
+                            <span class="form-steps__item-text">On The Way</span>
+                          </div>
+                          </div>
+                          <div class="form-steps__item form-steps__item--completed">
+                            <div class="form-steps__item-content">
+                              <span class="form-steps__item-icon">3</span>
+                              <span class="form-steps__item-line"></span>
+                              <span class="form-steps__item-text">Delivered</span>
+                              <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                            </div>
+                          </div>
+                          <%}else if(order.status == "On The Way"){%>
+                            <div class="form-steps__item form-steps__item--completed">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">1</span>
+                            <span class="form-steps__item-text">Order Placed</span>
+                            <div class="form-steps__item-text"><%=order.orderDate%></div>
+                          </div>
+                        </div>
+                            <div class="form-steps__item form-steps__item--active">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">2</span>
+                                <span class="form-steps__item-line"></span>
+                                <span class="form-steps__item-text">On The Way</span>
+                              </div>
+                              </div>
+                              <div class="form-steps__item">
+                                <div class="form-steps__item-content">
+                                  <span class="form-steps__item-icon">3</span>
+                                  <span class="form-steps__item-line"></span>
+                                  <span class="form-steps__item-text">Delivery</span>
+                                  <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                                </div>
+                              </div>
+                      <%}else if(order.status == "Cancelled"){%>
+                        <div class="form-steps__item form-steps__item--active">
+                          <div class="form-steps__item-content">
+                            <span class="form-steps__item-icon">1</span>
+                        <span class="form-steps__item-text">Order Placed</span>
+                        <div class="form-steps__item-text"><%=order.orderDate%></div>
+                      </div>
+                    </div>
+                          <div class="form-steps__item form-steps__item--completed">
+                            <div class="form-steps__item-content">
+                              <span class="form-steps__item-icon">2</span>
+                              <span class="form-steps__item-line"></span>
+                              <span class="form-steps__item-text">Cancelled</span>
+                              <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                            </div>
+                          </div>
+                        <%}else if(order.status == "Returned"){%>
+                          <div class="form-steps__item form-steps__item--active">
+                            <div class="form-steps__item-content">
+                              <span class="form-steps__item-icon">1</span>
+                          <span class="form-steps__item-text">Order Placed</span>
+                          <div class="form-steps__item-text"><%=order.orderDate%></div>
+                        </div>
+                      </div>
+                            <div class="form-steps__item">
+                              <div class="form-steps__item-content form-steps__item--completed">
+                                <span class="form-steps__item-icon">2</span>
+                                <span class="form-steps__item-line"></span>
+                                <span class="form-steps__item-text">Returned</span>
+                                <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                              </div>
+                            </div>
+                          <%}else{%>
+                            <div class="form-steps__item form-steps__item--active">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">1</span>
+                            <span class="form-steps__item-text">Order Placed</span>
+                            <div class="form-steps__item-text"><%=order.orderDate%></div>
+                          </div>
+                        </div>
+                            <div class="form-steps__item">
+                              <div class="form-steps__item-content">
+                                <span class="form-steps__item-icon">2</span>
+                                <span class="form-steps__item-line"></span>
+                                <span class="form-steps__item-text">On The Way</span>
+                              </div>
+                              </div>
+                              <div class="form-steps__item">
+                                <div class="form-steps__item-content">
+                                  <span class="form-steps__item-icon">3</span>
+                                  <span class="form-steps__item-line"></span>
+                                  <span class="form-steps__item-text">Delivery</span>
+                                  <div class="form-steps__item-text"><%=order.deliveryDate%></div>
+                                </div>
+                              </div>
+                            <%}%>
+                                
+                                <!-- REPLACE THIS CODE WHEN THAT LINE IS COMPLETE  -->
+                                <!-- ACTIVE is current completed gives tick and else normal  -->
+                            <!-- <div class="form-steps__item form-steps__item--completed">
+                                <div class="form-steps__item-content">
+                                  <span class="form-steps__item-icon">2</span>
+                                  <span class="form-steps__item-line"></span>
+                                  <span class="form-steps__item-text">Delivery</span>
+                                </div>
+                                </div> -->
+                        </div>
+                    <section class="section product-detail">
+                        <div class="details container">
+                          <div class="left">
+                            <div class="main">
+                              <img class="product-image" src="<%=order.items.image%>" alt="" />
+                            </div>
+                            
+                          </div>
+                          <div class="right r-detail" >
+                            
+                            <h1 style="	color:rgb(0, 38, 70) ; "><%=order.items.itemname%></h1>
+                            <h3 class="dis-in ">Price :</h3>
+                            <div class="price order-price"><%=order.items.price%></div>
+                            <br>
+                            <div class="order-id" style="margin-left: 0em;" >
+                                <h3 class="dis-in">Quantity :</h3>
+                                <p class="dis-in-pad">
+                                  <%=order.items.quantity%>
+                                </p>
+                                </div>
+                            <br>
+                            <div  class="order-id" >
+                            <h3 class="dis-in" >Order ID :</h3>
+                            <p class="dis-in-pad">
+                              <%=order._id%>
+                            </p>
+                            </div>
+                            <br>
+                                <div  class="order-id order-date">
+                                <h3 class="dis-in">Expected Date :</h3>
+                                <p class="dis-in-pad">
+                                  <%=order.deliveryDate%>
+                                </p>
+                                </div>
+                            <!-- <h3 class="last-h3">Product Detail</h3>
+                            <p >
+                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima
+                              delectus nulla voluptates nesciunt quidem laudantium, quisquam
+                              voluptas facilis dicta in explicabo, laboriosam ipsam suscipit!
+                            </p> -->
+                            <br>
+                            <div  class="order-idd" >
+                                <h3 class="dis-in" >Payment Method :</h3>
+                                <p class="dis-in-pad">
+                                  <%=order.payment%>
+                                </p>
+                            </div>
+                            
+                            <%if(order.status == "Returned" || order.status == "Cancelled"){%>
+                              <br>
+                            <div  class="order-idd" >
+                              <h3 class="dis-in" >Reason :</h3>
+                              <p class="dis-in-pad">
+                                <%=order.msg%>
+                            </p>
+                          </div>
+                          <%}%>
+                          </div>
+                        </div>
+                      </section>
+
+
+
+                      <form class="form-ship" action="#" method="post">
+                        <div class="row-details">
+                          <div class="col">
+                            <h3 class="Address-title">Shipping Address</h3>
+                          </div>
+                        </div>
+                        
+                        <div class="row-details">
+                          <div class="col">
+                            <label class="address-form-label" for="firstName">First name</label>
+                            <input class="address-input" type="text" id="firstName"  value="<%=order.address.firstname%>" readonly/>
+                          </div>
+                          <div class="col">
+                            <label class="address-form-label" for="lastName">Last name</label>
+                            <input class="address-input" type="text" id="lastName" value="<%=order.address.lastname%>" readonly/>
+                          </div>
+                        </div>
+                        
+                        <div class="row-details">
+                          <div class="col">
+                            <label class="address-form-label" for="address">Address</label>
+                            <input class="address-input" type="text" id="address" value="<%=order.address.line%>" readonly/>
+                          </div>
+                        </div>
+                        
+                        <div class="row-details">
+                          <div class="col">
+                            <label class="address-form-label" for="city">City</label>
+                            <input class="address-input" type="text" id="city" value="<%=order.address.city%>" readonly/>
+                          </div>
+                          <div class="col">
+                            <label class="address-form-label" for="country">Country</label>
+                            <input class="address-input" type="text" id="country" value="<%=order.address.country%>" readonly/>
+                          </div>
+                        </div> 
+
+                        <div class="row-details">
+                            <div class="col">
+                              <label class="address-form-label" for="city">Postal Code</label>
+                              <input class="address-input" type="text" id="city" value="<%=order.address.postal%>" readonly/>
+                            </div>
+                            <div class="col">
+                              <label class="address-form-label" for="country">Phone No.</label>
+                              <input class="address-input" type="text" id="country" value="<%=order.address.phone%>" readonly/>
+                            </div>
+                          </div> 
+
+
+                          <div class="row-details">
+                            <div class="col">
+                              <label class="address-form-label" for="address">E-mail</label>
+                              <input class="address-input" type="text" id="address" value="<%=order.address.email%>" readonly/>
+                            </div>
+                          </div>
+                          <br>
+  
+                      <!-- end .hide -->
+                      
+                      </form>
+
+                      
+                      <%if(order.status == "Delivered"){%>
+                        <div style="display: flex; flex-direction: row-reverse;">
+                      <a href="/order/return/<%=order._id%>" class="R-btn" >Return</a>
+                        </div>
+                      <%}%>
+          </div>
+        </div>
+  
+  </section>
+  <%- include("../partials/allfooter.ejs") %>
+  
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

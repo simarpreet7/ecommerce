@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  
+  <%- include("../partials/nav.ejs") %>
+
+  <!-- PRODUCTS -->
+
+  <section class="section products">
+    <div class="products-layout container">
+        <div class="col-1-of-4">
+          <div>
+            <div class="block-title">
+              <h3>Category</h3>
+            </div>
+            <form action="/search">
+              <input type="hidden" name="category" value="null"></input>
+              <%categories.forEach(function(category){%>
+                <ul class="block-content">
+                  <li>
+                    <input type="radio" name="category" value="<%= category.name %>">
+                    <label for="category">
+                      <span><%= category.name %></span>
+                    </label>
+                  </li>
+                </ul>
+              <%})%>
+          </div>
+
+
+        </div>
+
+        <div class="col-3-of-4" >
+          <h2>Showing results for "<%=name%>"</h2>
+          <div style="display: flex; align-items: center;">
+          <div class="item" style="padding: 1em;">
+            <input type="hidden" name="search" id="name" value="<%=name%>"></input>
+            <label for="sort-by"  style="color: #457dff;" >Sort By</label>
+            <select name="sortby" id="sort-by">
+              <option value="title" selected="selected">Name</option>
+              <option value="number">Price</option>
+            </select>
+          </div>
+          <div class="item" style="padding: 1em;">
+            <label for="order-by" style="color: #457dff;">Order</label>
+            <select name="orderby" id="sort-by">
+              <option value="ASC" selected="selected">ASC</option>
+              <option value="DESC">DESC</option>
+            </select>
+          </div>
+          <button class="apply-btn">Apply</button>
+        </div>
+        </form>
+          <div class="product-layout">
+            <%if(products.length > 0){%>
+            <%products.forEach(function(product){%>
+            <div class="product">
+              <div class="img-container">
+                <img style="width: 100%;"  src="<%=product.imageURL%>" alt="" />
+                <div class="addCart">
+                  <form method="POST" action="/cart/add/<%= product._id%>">
+                    <div class="form-group">
+                      <input type="hidden" name="product_id" id="quantity" value="<%= product._id %>"></input>
+                      <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                      <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                      <input type="hidden" name="image" id="image" value="<%= product.imageURL %>"></input>
+                      <input type="hidden" name="name" id="name" value="<%= product.name %>"></input>
+                    </div>
+                      <button type="submit" class="btn btn-cart btn-cart-search btn-primary btn-lg" ><i class="fas fa-shopping-cart"></i></button>
+                  </form>
+              </div>
+                <ul class="side-icons side-icons-dashboard">
+                  <span class="dash" ><i class="fas fa-search"></i></span>
+                  <span class="dash" ><i class="far fa-heart"></i></span>
+                  <span class="dash" ><i class="fas fa-sliders-h"></i></span>
+                </ul>
+              <div class="bottom">
+                <a href=""><%=product.name%></a>
+                <div class="price">
+                  <span><%=product.price%></span>
+                </div>
+              </div>
+            </div>
+          </div>
+            <%})%>
+            <%}else{%>
+              <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+                  <h1 class="display-4">No products found</h1>
+                  <p class="lead">Try searching different products.</p>
+              </div>
+            <%}%>
+          </div>
+
+          <!-- PAGINATION -->
+          <ul class="pagination">
+            <span>1</span>
+            <span>2</span>
+            <span class="icon">››</span>
+            <span class="last">Last »</span>
+          </ul>
+        </div>
+    </div>
+  </section>
+
+  <%- include("../partials/allfooter.ejs") %>
+  <!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

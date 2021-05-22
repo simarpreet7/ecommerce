@@ -1,0 +1,63 @@
+<%- include("../partials/header.ejs") %>
+<link rel="stylesheet" href="../../public/css/signup.css" type="text/css">
+<div class="box">
+  <nav class="navbar navbar-expand-sm navbar-primary bg-white">
+    <a class="d-inline-flex" href="/home"><img class="logo" src="../../public/img/logo.png" alt="logo"></a>
+  </nav>
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+      <div class="container">
+        <div class="card login-card">
+          <div class="row no-gutters">
+            <div class="col-md-7">
+              <div class="card-body">
+                <div class="d-flex align-items-start justify-content-start brand-wrapper">
+                  <a class="text-white btn-css float-right btn btn-primary btn-block " href="/auth/login">Log In</a>
+                </div>
+                <div class="box-css">
+                <p class="login-card-description">New Here ?</p>
+                <form method="POST" action="/auth/signup">
+                    <div class="form-group">
+                      <label class="sr-only">Username</label>
+                      <input type="text" name="username"  class=" rounded-pill form-control" placeholder="Username">
+                    </div>
+                    <div class="form-group mb-4">
+                      <label for="password" class="sr-only">Password</label>
+                      <input type="password" name="password" class=" rounded-pill form-control" placeholder="Password">
+
+                      <div class="container">
+                        <div class="row">
+                          <div class="col-8">
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" id="customRadioInline1" name="category" class="custom-control-input" value="User">
+                              <label class="custom-control-label" for="customRadioInline1">User</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                              <input type="radio" id="customRadioInline2" name="category" class="custom-control-input" value="Seller">
+                              <label class="custom-control-label" for="customRadioInline2">Seller</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <button type="submit" class=" btn-shadow btn  btn-block rounded-pill login-btn mb-4" > Sign Up </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="  clr-bg col-md-5 " >
+                <img class="img-fluid img-css" src="https://drive.google.com/uc?id=1fD0H1Vjc-Ak_xdg1b5vdW_0ocOWiEraP" alt="sign_up" class="login-card-img">
+              </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer style="text-align: center;">
+      <div>Contributor : Simarpreet , Arnav , Naveen</div>
+      <div>Copyright &copy; 2021 glasscodeclub</div>
+    </footer>
+    
+    <%- include("../partials/footer.ejs") %>
+  </div>
+

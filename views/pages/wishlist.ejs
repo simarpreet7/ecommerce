@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/wishlist.css" />
+</head>
+
+<body>
+
+  <%- include("../partials/nav.ejs") %>
+
+  <section class="section promotion">
+    <div class="body-wishlist">
+    <div class="shopping-cart">
+              
+      <!-- Title --> 
+      <div class="title-wishlist">
+        Wishlist
+      </div>
+      
+
+        <!-- Products -->
+        <%if(products.length > 0){%>
+            
+          <%products.forEach(function(product){%>
+            
+            
+          <div class="item">
+            <div class="buttons">
+              <form action="/wishlist/remove/<%=currentUser._id%>/<%=product.item%>" method="POST">
+                <button class="btn-remove">X</button>
+              </form>
+            </div>
+    
+            <div class="image-wishlist" >
+              <img class="img-wishlist" src="<%=product.image%>" alt="" />
+            </div>
+    
+            <div class="description">
+              <span style="color: #43484D;
+              font-weight: 400;"><%=product.itemname%></span>
+            </div>
+    
+
+            <div class="total-price-wishlist">Rs. <%=product.price%></div>
+
+            <form method="POST" action="/cart/add/<%= product.item%>">
+              <div class="form-group">
+                <input type="hidden" name="product_id" id="quantity" value="<%= product.item %>"></input>
+                <input type="hidden" name="quantity" id="quantity" value="1"></input>
+                <input type="hidden" name="price" id="priceHidden" value="<%= product.price %>"></input>
+                <input type="hidden" name="discount" id="discount" value="<%= product.discount %>"></input>
+                <input type="hidden" name="image" id="image" value="<%= product.image %>"></input>
+                <input type="hidden" name="name" id="name" value="<%= product.itemname %>"></input>
+              </div>
+              <button type="submit" class=" btn-wishlist-cart "><i class="fas fa-shopping-cart"></i></button>
+            </form>
+    
+          </div>
+          <%})%>
+
+        <%}else{%>
+         
+          <div class="shadow-none p-3 mb-5 bg-light rounded jumbotron">
+              <h1 class="display-4" style="padding:2em; font-weight: 500; text-align: center;">Your wishlist is empty.</h1>
+          </div>
+        <%}%>
+      </div>
+    </div>    
+
+  </section>
+
+  <%- include("../partials/allfooter.ejs") %>
+  
+<!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

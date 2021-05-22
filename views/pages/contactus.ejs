@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/contactus.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/integration
+          emailjs.init('user_6GzKH4U36UgVIlMswmMCI');
+      })();
+  </script>
+  <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('myForm').addEventListener('submit', function(event) {
+              event.preventDefault();
+              var fname = document.getElementById("fname").value
+              var fmsg = document.getElementById("fmsg").value
+              var femail = document.getElementById("femail").value
+              var fcontact = document.getElementById("fcontact").value
+              emailjs.send("service_6le3hh7","template_jac44qn",{
+                  to_name: "GCC",
+                  from_name: fname,
+                  message: fmsg,
+                  phone: fcontact,
+                  email: femail,
+              }).then(function() {
+                    alert("EMAIL SENT")
+                    location.reload();
+                    console.log('SUCCESS!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+          });
+      }
+  </script>
+  
+</head>
+
+<body >
+
+    <%- include("../partials/nav.ejs") %>
+    <section class="section promotion contactus">
+      
+      <div class="background">
+        <div class="container contactus">
+          <div class="screen">
+            <div class="screen-header">
+              <div class="screen-header-left">
+                <div class="screen-header-button close"></div>
+                <div class="screen-header-button maximize"></div>
+                <div class="screen-header-button minimize"></div>
+              </div>
+              <div class="screen-header-right">
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+                <div class="screen-header-ellipsis"></div>
+              </div>
+            </div>
+            <div class="screen-body">
+              <div class="screen-body-item left">
+                <div class="app-title">
+                  <span>CONTACT</span>
+                  <span>US</span>
+                </div>
+                <div class="app-contact">Contact Info : glasscodeclub@gmail.com</div>
+              </div>
+              <form id="myForm">
+              <div class="screen-body-item">
+                <div class="app-form">
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="NAME" id="fname">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="EMAIL" id="femail">
+                  </div>
+                  <div class="app-form-group">
+                    <input class="app-form-control contactus" placeholder="CONTACT No." id="fcontact">
+                  </div>
+                  <div class="app-form-group message">
+                    <input class="app-form-control contactus" placeholder="MESSAGE" id="fmsg">
+                  </div>
+                  <div class="app-form-group buttons">
+                    <a href="contactus" class="app-form-button contactus">CANCEL</a>
+                    <input type="submit" class="app-form-button contactus" value="SEND">
+                  </div>
+                </div>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+    </section>
+    
+    <%- include("../partials/allfooter.ejs") %>
+    <!-- Glidejs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/glide.min.js"></script>
+
+<!-- Custom Scripts -->
+<script src="../../public/js/home.js"></script>
+<script src="../../public/js/slider.js"></script>
+</body>
+
+</html>

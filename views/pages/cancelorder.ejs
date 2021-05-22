@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/3bb9d2c9bc.js" crossorigin="anonymous"></script>
+  <!-- Glidejs -->
+  <!-- Custom StyleSheet -->
+  <link rel="stylesheet" href="../../public/css/home.css" />
+  <link rel="stylesheet" href="../../public/css/multistep.css" />
+</head>
+<body>
+
+    <%- include("../partials/nav.ejs") %>
+<section class="section promotion">
+  <!-- multistep form -->
+<section class="body-tab">
+  <form id="multistepsform" action="/order/cancel/<%=order._id%>" method="POST">
+  <!-- progressbar -->
+  <!-- fieldsets -->
+  <fieldset>
+    <h2 class="fs-title">Cancelling the Order</h2>
+    <h3 class="fs-subtitle"></h3>
+    <input type="text" name="cancelreason" placeholder=" Enter the Reason " required>
+    <div class="box-address">
+        <h3 class="head-add">Shipping Address</h3>
+        <section class="root">
+            <figure>
+                <figcaption>
+        <div class="flex-info" ><span class="flex-info-heading">Address :</span><span class="flex-info-content" > <%=order.address.line%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Phone No :</span><span class="flex-info-content"> <%=order.address.phone%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Country :</span><span class="flex-info-content"> <%=order.address.country%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >City :</span><span class="flex-info-content">  <%=order.address.city%></span></div>
+                </figcaption>
+              <img  class="my-img" src="../../public/img/return.png">
+            </figure>
+        </section>
+    </div>
+    
+    <div class="box-address">
+        <h3 class="head-add">Order Details</h3>
+        <section class="root">
+            <figure>
+                <figcaption>
+        <div class="flex-info" ><span class="flex-info-heading">Order Id :</span><span class="flex-info-content" > <%=order._id%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Order Date :</span><span class="flex-info-content"> <%=order.orderDate%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Order Total :</span><span class="flex-info-content"><%=order.totalPrice%></span></div>
+        <div class="flex-info" ><span class="flex-info-heading" >Payment Method :</span><span class="flex-info-content"> <%=order.payment%></span></div>
+                </figcaption>
+              <img  class="my-img" src="../../public/img/logo.png">
+            </figure>
+        </section>
+    </div>
+
+    <h3 class="head-add">Are you sure to cancel?</h3>
+    <h4 class="cancel-order"> If you had made any kind of payment then the amount will reflect in your account shortly. </h4>
+    
+    
+    <input class="submit-btn" type="submit" value="Submit">
+  </fieldset>
+  
+</form>
+</section>
+</section>
+
+
+
+<%- include("../partials/allfooter.ejs") %>
+  <!-- Glidejs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> 
+  
+  <!-- Custom Scripts -->
+  <script src="../../public/js/home.js"></script>
+  <script src="../../public/js/slider.js"></script>
+  <script src="../../public/js/multistep.js"></script>
+  </body>
+  
+  </html>

@@ -1,0 +1,202 @@
+
+.history-page {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+  }
+  
+  .history-page__title {
+    font-size: xx-large;
+    color: rgb(94, 169, 255);
+  }
+  
+  hr {
+    margin-top: 1em;
+    color: #b4b3b3;
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .apply-btnn{
+      background-color: rgb(58, 58, 255);
+      padding: 1em 3em;
+      color: white;
+      border-radius: 27px;
+
+
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap');
+ *, *::after, *::before {
+	 padding: 0;
+	 margin: 0;
+	 box-sizing: border-box;
+}
+ html {
+	 font-size: 62.5%;
+}
+
+ h2, h4, h6 {
+	 margin: 0;
+	 padding: 0;
+	 display: inline-block;
+}
+ .root {
+	 padding: 3rem 1.5rem;
+	 border-radius: 5px;
+     margin-left: .7em;
+     border-style: dotted  !important;
+	 width: 17em;
+     
+     
+     
+}
+ figure {
+	 display: flex;
+}
+ figure img {
+	 width: 8rem;
+	 height: 8rem;
+	 border-radius: 50%;
+	 border: 1px solid #0024f0;
+	 margin-right: 1.5rem;
+}
+ figure figcaption {
+	 display: flex;
+	 flex-direction: column;
+	 justify-content: space-evenly;
+     width: 100%;
+     
+}
+ figure figcaption h4 {
+	 font-size: 1.4rem;
+	 font-weight: 500;
+}
+ figure figcaption h6 {
+	 font-size: 1rem;
+	 font-weight: 300;
+}
+ figure figcaption h2 {
+	 font-size: 1.6rem;
+	 font-weight: 500;
+}
+ .order-track {
+	 margin-top: 2rem;
+	 padding: 0 1rem;
+	 border-top: 1px dashed #2c3e50;
+	 padding-top: 2.5rem;
+	 display: flex;
+	 flex-direction: column;
+}
+ .order-track-step {
+	 display: flex;
+	 height: 7rem;
+     width: 17em;
+}
+ .order-track-step:last-child {
+	 overflow: hidden;
+	 height: 4rem;
+}
+ .order-track-step:last-child .order-track-status span:last-of-type {
+	 display: none;
+}
+ .order-track-status {
+	 margin-right: 1.5rem;
+	 position: relative;
+}
+ .order-track-status-dot {
+	 display: block;
+	 width: 2.2rem;
+	 height: 2.2rem;
+	 border-radius: 50%;
+	 background: #00f0bc;
+}
+ .order-track-status-line {
+	 display: block;
+	 margin: 0 auto;
+	 width: 2px;
+	 height: 7rem;
+	 background: #0090f0;
+}
+ .order-track-text-stat {
+	 font-size: 1.3rem;
+	 font-weight: 500;
+	 margin-bottom: 3px;
+}
+ .order-track-text-sub {
+	 font-size: 1rem;
+	 font-weight: 300;
+}
+ .order-track {
+	 transition: all 0.3s height 0.3s;
+	 transform-origin: top center;
+}
+ 
+.sp{
+    margin-top: 1em !important;
+    padding-top: 1em !important;
+}
+
+.RowBox{
+    margin: .5em 1em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.separate{
+    border: 1px dashed  !important; 
+    margin-left: 1em;
+    width: 90% !important;
+}
+.separate2{
+    border: .7px dashed  !important; 
+    margin-left: 1em;
+    width: 90% !important;
+    margin-bottom: 1em !important; 
+   
+}
+
+
+
+
+.dark{
+    font-size: .8em  !important;
+    font-weight: 700 !important;
+    
+}
+
+.flex-col{
+    color: rgb(15, 15, 179);
+    font-size: 1.5em;
+}
+
+.idd{
+    font-size: .9em  !important;
+}
+
+.div-btn{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.OH-btnn{
+    background-color: rgb(96, 160, 255);
+    color: cornsilk;
+    padding: .4em 1em;
+    border-radius: 20px;
+	margin: auto 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ////////////////////////////TABS//////////////////////////// */

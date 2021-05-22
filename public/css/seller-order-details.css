@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+
+
+
+.details-container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  height: auto;
+}
+
+@media (min-width: 1200px)
+{
+  .details-container{
+    max-width: 1140px;
+  }
+}
+
+.product-img{
+    margin-left: 2em;
+    width: 80%;
+    height: 400px;
+}
+
+
+.details-title{
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+  background: -moz-linear-gradient(top left, #81bcff 0%, #70EAFF 100%);
+  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius:5px 5px 0 0 ;
+  padding: 20px;
+  color: #f6f6f6;
+  text-align: center;
+}
+
+.card{
+    margin: 2em 0em;
+}
+
+
+
+/* ///////////////////////////////////////////////TEAM////////////////////////// */
